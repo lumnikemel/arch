@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # This script will create a functional running Arch installation from a booted Arch-ISO.
+# This creates a UEFI install with systemd-boot.
 # To use this script simply run the following command from the Arch-ISO:
-# wget -O - https://github.com/lumnikemel/arch/blob/master/install.sh | sh
+# wget -O - https://raw.githubusercontent.com/lumnikemel/arch/master/install.sh | sh
 
 
 echo "IP Address is:"
