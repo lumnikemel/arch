@@ -2,7 +2,7 @@
 
 # This script will create a functional running Arch installation from a booted Arch-ISO.
 # To use this script simply run the following command from the Arch-ISO:
-# wget -O - 
+# wget -O - https://github.com/lumnikemel/arch/blob/master/install.sh | sh
 
 
 echo "IP Address is:"
