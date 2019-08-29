@@ -4,6 +4,7 @@
 # This creates a UEFI install with systemd-boot.
 # To use this script simply run the following command from the Arch-ISO:
 # wget -O - https://raw.githubusercontent.com/lumnikemel/arch/master/install.sh | sh
+# Shortened link is: https://is.gd/ArchInstall. Note that the A and I must be capitalized, or it won't be the right link.
 
 
 echo "IP Address is:"
