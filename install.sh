@@ -118,7 +118,7 @@ mkinitcpio -p linux
 # I like to use laptops as servers, so having the default action to suspend on lid-close doesn't work out so well.
 # Set systemd to ignore the Lid Switch when connected to External Power.
 #HandleLidSwitchExternalPower=suspend
-sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/g' /etc/fstab
+sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/g' /etc/systemd/logind.conf
 
 exit
 EOF
