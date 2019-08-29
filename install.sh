@@ -114,6 +114,12 @@ echo "options root=LABEL=System rw" >> /boot/loader/entries/arch.conf
 # For special configurations, modify the mkinitcpio.conf(5) file and recreate the initramfs image:
 mkinitcpio -p linux
 
+# Optmize: Power Actions
+# I like to use laptops as servers, so having the default action to suspend on lid-close doesn't work out so well.
+# Set systemd to ignore the Lid Switch when connected to External Power.
+#HandleLidSwitchExternalPower=suspend
+sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/g' /etc/fstab
+
 exit
 EOF
 chmod +x /mnt/chroot.sh
