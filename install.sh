@@ -107,7 +107,7 @@ echo "title   Arch Linux" >> /boot/loader/entries/arch.conf
 echo "linux   /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd  /intel-ucode.img" >> /boot/loader/entries/arch.conf
 echo "initrd  /initramfs-linux.img" >> /boot/loader/entries/arch.conf
-echo "options root=LABEL=System rw" >> /boot/loader/entries/arch.conf
+echo "options root=LABEL=System rw iommu=on" >> /boot/loader/entries/arch.conf
 
 # Initramfs
 # Creating a new initramfs is usually not required, because mkinitcpio was run on installation of the linux package with pacstrap.
