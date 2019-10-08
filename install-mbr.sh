@@ -100,6 +100,7 @@ sed -i 's/relatime/noatime/g' /etc/fstab
 
 # Install and set up bootloader.
 grub-install --target=i386-pc /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
 
 # Initramfs
 # Creating a new initramfs is usually not required, because mkinitcpio was run on installation of the linux package with pacstrap.
