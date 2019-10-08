@@ -27,7 +27,7 @@ mount /dev/sda1 /mnt
 pacman -Syy
 
 # would recommend to use linux-lts kernel if you are running a server environment, otherwise just use "linux"
-pacstrap /mnt base base-devel intel-ucode openssh ntp
+pacstrap /mnt base base-devel intel-ucode openssh ntp grub
 genfstab -U /mnt >> /mnt/etc/fstab
 
 cat << EOF > /mnt/authorized_keys
