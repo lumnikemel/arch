@@ -11,20 +11,18 @@ echo "IP Address is:"
 ip a | grep "inet " | grep -v "127.0.0.1" | cut -d " " -f 6 | cut -d '/' -f 1
 
 sgdisk --clear \
-  --new 1::+100M --typecode=1:ef00 --change-name=1:'EFI' \
-  --new 2::-0 --typecode=2:8300 --change-name=2:'System' \
+  --new 1::-0 --typecode=1:8300 --change-name=1:'System' \
   /dev/sda
-mkfs.vfat -F 32 /dev/sda1
-mkfs.ext4 /dev/sda2
+mkfs.ext4 /dev/sda1
 
 # you can find your closest server from: https://www.archlinux.org/mirrorlist/all/
 echo 'Server = http://il.us.mirror.archlinux-br.org/$repo/os/$arch' > /etc/pacman.d/mirrorlist
-mount /dev/sda2 /mnt
+mount /dev/sda1 /mnt
 
 # Mount the EFI boot partition to /boot. ALT: /boot/efi is a separate boot loader is needed.
 # Not sure if ZFS needs this.
-mkdir /mnt/boot
-mount /dev/sda1 /mnt/boot
+#mkdir /mnt/boot
+#mount /dev/sda1 /mnt/boot
 
 pacman -Syy
 
@@ -98,16 +96,10 @@ echo "SystemMaxUse=16M" >> /etc/systemd/journald.conf
 # Optimization: Minimize Writes: Removes "access time" logging on files.
 sed -i 's/relatime/noatime/g' /etc/fstab
 
-e2label /dev/sda2 System
+#e2label /dev/sda2 System
 
 # Install and set up bootloader.
-bootctl --path=/boot install
-touch /boot/loader/entries/arch.conf
-echo "title   Arch Linux" >> /boot/loader/entries/arch.conf
-echo "linux   /vmlinuz-linux" >> /boot/loader/entries/arch.conf
-echo "initrd  /intel-ucode.img" >> /boot/loader/entries/arch.conf
-echo "initrd  /initramfs-linux.img" >> /boot/loader/entries/arch.conf
-echo "options root=LABEL=System rw iommu=on" >> /boot/loader/entries/arch.conf
+grub-install --target=i386-pc /dev/sda
 
 # Initramfs
 # Creating a new initramfs is usually not required, because mkinitcpio was run on installation of the linux package with pacstrap.
