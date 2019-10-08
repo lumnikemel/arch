@@ -10,10 +10,10 @@
 echo "IP Address is:"
 ip a | grep "inet " | grep -v "127.0.0.1" | cut -d " " -f 6 | cut -d '/' -f 1
 
-sgdisk --clear \
-  --new 1::-0 --typecode=1:8300 --change-name=1:'System' \
-  /dev/sda
-mkfs.ext4 /dev/sda1
+#sgdisk --clear \
+#  --new 1::-0 --typecode=1:8300 --change-name=1:'System' \
+#  /dev/sda
+#mkfs.ext4 /dev/sda1
 
 # you can find your closest server from: https://www.archlinux.org/mirrorlist/all/
 echo 'Server = http://il.us.mirror.archlinux-br.org/$repo/os/$arch' > /etc/pacman.d/mirrorlist
