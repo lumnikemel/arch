@@ -17,11 +17,9 @@ sudo systemctl start org.cups.cupsd.service
 # https://wiki.archlinux.org/index.php/CUPS/Printer_sharing
 sudo pacman -Syu --noconfirm samba
 
-cat << EOF > /etc/samba/smb.conf
+sudo cat << EOF > /etc/samba/smb.conf
 [global]
-...
 printing = CUPS
-...
 
 [printers]
     comment = All Printers
