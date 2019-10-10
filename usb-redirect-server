@@ -1,0 +1,31 @@
+#!/bin/bash
+
+sudo pacman -Syu --noconfirm usbip
+
+sudo modprobe usbip_host
+
+cat << EOF > /etc/systemd/system/usbip-bind@.service
+[Unit]
+ Description=USB-IP Binding on bus id %I
+ After=network-online.target usbipd.service
+ Wants=network-online.target
+ Requires=usbipd.service
+ #DefaultInstance=1-1.5
+ 
+ [Service]
+ Type=simple
+ ExecStart=/usr/bin/usbip bind -b %i
+ RemainAfterExit=yes
+ ExecStop=/usr/bin/usbip unbind -b %i  
+ Restart=on-failure
+ 
+ [Install]
+ WantedBy=multi-user.target
+ EOF
+ 
+# List the connected devices:
+  # sudo usbip list -l
+
+# To bind the required device. For example to share the device having busid 1-1:
+  # sudo systemctl enable usbip-bind\@1-1.service
+  # sudo systemctl start usbip-bind\@1-1.service
