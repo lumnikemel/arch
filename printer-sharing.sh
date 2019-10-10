@@ -4,6 +4,9 @@
 sudo pacman -Syu --noconfirm usbutils
 # Ensure USB printer is seen
 lsusb
+# Printer shows up as:
+  # Bus 001 Device 010: ID 413c:564f Dell Computer Corp.
+    
 
 # https://wiki.archlinux.org/index.php/CUPS
 sudo pacman -Syu --noconfirm cups
