@@ -29,7 +29,7 @@ mount /dev/sda1 /mnt/boot
 pacman -Syy
 
 # would recommend to use linux-lts kernel if you are running a server environment, otherwise just use "linux"
-pacstrap /mnt base base-devel intel-ucode openssh ntp dhcpcd mkinitcpio linux linux-firmware
+pacstrap /mnt base base-devel intel-ucode openssh ntp dhcpcd mkinitcpio linux linux-firmware nano
 genfstab -U /mnt >> /mnt/etc/fstab
 
 cat << EOF > /mnt/authorized_keys
