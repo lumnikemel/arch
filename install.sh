@@ -18,7 +18,7 @@ mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda2
 
 # you can find your closest server from: https://www.archlinux.org/mirrorlist/all/
-echo 'Server = http://il.us.mirror.archlinux-br.org/$repo/os/$arch' > /etc/pacman.d/mirrorlist
+#echo 'Server = http://il.us.mirror.archlinux-br.org/$repo/os/$arch' > /etc/pacman.d/mirrorlist
 mount /dev/sda2 /mnt
 
 # Mount the EFI boot partition to /boot. ALT: /boot/efi is a separate boot loader is needed.
